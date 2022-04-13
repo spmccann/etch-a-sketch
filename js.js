@@ -2,7 +2,6 @@ createGrid(16)
 draw()
 newGrid()
 
-
 function createGrid(gridSize) {
     const outerContainer = document.querySelector('body');
     const container = document.createElement('div')
@@ -10,7 +9,7 @@ function createGrid(gridSize) {
     container.id = 'container'
     outerContainer.appendChild(container);
 
-    for (let i=0; i<gridSize; i++){
+    for (let i = 0; i < gridSize; i++) {
         const outerGrid = document.querySelector('#container')
         const row = document.createElement('div')
         row.classList.add('row')
@@ -18,30 +17,28 @@ function createGrid(gridSize) {
         outerGrid.appendChild(row)
     }
 
-    for (let i=0; i<gridSize; i++){  
-        for (let i=0; i<gridSize; i++){  
+    for (let i = 0; i < gridSize; i++) {
+        for (let i = 0; i < gridSize; i++) {
             const outerRow = document.querySelector(`#row${i}`)
             const grid = document.createElement('div');
             grid.classList.add('grid');
-            // grid.textContent = `box`
             outerRow.appendChild(grid);
         }
     }
 }
 
-function draw () {
+function draw() {
     const divs = document.querySelectorAll('.grid')
     divs.forEach((div) => {
         div.addEventListener('mouseover', (e) => {
-            const red = Math.floor(Math.random()*255)
-            const green = Math.floor(Math.random()*255)
-            const blue = Math.floor(Math.random()*255)
+            const red = Math.floor(Math.random() * 255)
+            const green = Math.floor(Math.random() * 255)
+            const blue = Math.floor(Math.random() * 255)
             const randomColor = `rgb(${red}, ${green}, ${blue})`
             e.target.style.background = randomColor;
         });
     });
 }
-
 
 function newGrid() {
     const cntr = document.querySelector('#container')
@@ -52,11 +49,9 @@ function newGrid() {
             cntr.textContent = "";
             createGrid(answer)
             draw()
-        }
-        else {
+        } else {
             alert("Grid must be between 1 and 100.")
         }
-        
     });
 }
 
